@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<!--
+  LIGHTSTREAMER - www.lightstreamer.com
+  Basic Instant Messenger Demo
+  
+  Copyright 2013 Weswit s.r.l.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Lightstreamer :: Basic Instant Messenger Demo</title>
+  <link rel="stylesheet" type="text/css" href="css/im.css" />
+</head>
+
+<body>
+  <a href="https://github.com/Weswit/Lightstreamer-example-Messenger-client-javascript" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:1" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+  <div id="wrap">
+    <table width="518" border="0">  
+      <tr>
+        <td><a href="http://www.lightstreamer.com" target="_blank">
+          <img src="images/logo.png" alt="LIGHTSTREAMER" hspace="0" border="0" /></a></td>
+        <td class="demoTitle">BASIC INSTANT MESSENGER DEMO</td>
+      </tr>
+    </table>
+
+    <br />
+    <br />
+
+    <!-- nickname edit form -->
+    <form onSubmit="submitNick(); return false;" style="margin: 0px">
+      <span class="sendTitle">My nickname:</span>
+      <input id="user_nick" type="text" value="" class="sendTitle" size="20" />
+      <input id="nick_button" type="submit" disabled value="Login" />
+    </form>
+
+    <table border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td>
+          <!-- message container; the scrollbar will be handled by Lightstreamer -->
+          <div id="message_scroll" class="messagePanel">
+            <!-- message row template; will be cloned for each incoming message -->
+            <div class="messageContainer" id="messages" data-source="lightstreamer" style="visibility: hidden">
+              <span class="messagePart1" data-source="lightstreamer" data-field="fromNick"></span><span class="messagePart1" style="margin-left: 5px">to</span>
+              <span class="messagePart1" data-source="lightstreamer" data-field="toNick"></span><span class="messagePart1" style="margin-left: 0px">:</span>
+              <span class="messagePart2" data-source="lightstreamer" data-field="message"></span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div id="buddies_title" class="buddiesTitle">Buddies</div>      
+            <!-- message container; the scroolbar will be handled by Lightstreamer -->
+            <div id="buddies_scroll" class="buddiesPanel">
+              <!-- message row template; will be cloned for each incoming message -->
+              <div data-source="lightstreamer" id="buddies">
+                <div data-source="lightstreamer" data-field="key" class="buddy"></div>
+              </div>
+            </div>
+        </td>
+        <td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <!-- message submission form -->
+          <form onSubmit="submitForm(); return false;" style="margin-top: 10px;" >
+            <div>
+              <input id="user_message" type="text" disabled style="width: 85%;" />
+              <input id="message_button" type="submit" disabled value="Send" style="width: 12%;" />
+            </div>
+          </form>
+        </td>
+      </tr>  
+    </table>
+  </div>
+	
+<script src="js/require.js"></script>
+<script src="js/lightstreamer.js"></script>
+<script type="text/javascript">
+
+//////////////// Nick Submission Form Handling
+
+  function submitNick() {
+    if (document.getElementById("user_nick")) {
+      var text = document.getElementById("user_nick").value;
+      if (!text) {
+        alert("Please choose a nickname");
+      } else if (text.indexOf(" ") != -1) {
+        alert("Space character is not allowed in the nickname");              
+      } else {
+        myNick = text;
+        document.getElementById("nick_button").disabled = true;
+        document.getElementById("user_nick").disabled = true;
+        document.getElementById("message_scroll").style.borderColor = "#0055aa";
+        document.getElementById("buddies_scroll").style.borderColor = "#0080ff";
+        document.getElementById("buddies_title").style.backgroundColor = "#0080ff";
+        document.getElementById("messages").style.visibility = "visible";
+        createMessageGrid();
+        createBuddyTable();
+      }
+    }
+  }
+  
+//////////////// Message Submission Form Handling
+
+  function submitForm() {
+    var textField = document.getElementById("user_message");
+    if (textField) {
+      var text = textField.value;
+      if (!text) {
+        alert("Can't send an empty message");
+      } else if (!currentBuddyNick) {
+        alert("Please select a buddy to send the message to");
+      } else {
+        var mex = "IM|" + myNick + "|" + currentBuddyNick + "|" + text;
+        client.sendMessage(mex);
+        textField.value = "";
+      }
+    }
+  }
+
+  //////////////// Initializations
+  
+  document.getElementById("nick_button").disabled = false;
+  document.getElementById("user_nick").disabled = false;   
+  
+  // DOM pointer to current recipient within buddiesTable
+  var currentBuddyNode = null;
+  // unique key of current recipient
+  var currentBuddyNick = null;
+
+  // nickname chosen by this page's user; it is used in the
+  // item name for the subscription
+  var myNick = null;
+  
+  var isActive = false;
+
+  // define a random default nickname
+  var userNickField = document.getElementById("user_nick");
+  if (userNickField) {
+    userNickField.value = "Guest" + Math.ceil(Math.random() * 1000);
+  }
+
+  
+//////////////// Message Table Management
+
+  var client = null;
+
+  // will create a Subscription+DynaGrid when the nickname is available
+  function createMessageGrid() {
+  
+    require(["js/lsClient","DynaGrid","Subscription"],function(lsClient,DynaGrid,Subscription) {   
+      
+      client = lsClient;
+      
+      var imGrid = new DynaGrid("messages",true);
+      imGrid.setMaxDynaRows("unlimited"); // the grid will expand with no limits
+      imGrid.setAutoScroll("ELEMENT", "message_scroll"); // automatic scrolling for new messages
+      imGrid.setAutoCleanBehavior(true, false);
+      imGrid.addListener({
+        // background colors to associate to identities
+        colors: ["#FFFFE0","#FFEBCD","#F0F8FF","#CCFFCC","#FFF5EE","#E0FFFF","#F0FFF0","#F0E68C","#87CEEB","#E6E6FA","#FFB6C1","#F5FFFA","#FFFAFA","#F5F5DC","#F8F8FF","#FFE4E1","#D8BFD8","#FFF0F5","#EEE8AA"],
+        next: 0,
+        associated: {},
+      
+        // set visual effects on received messages
+        onVisualUpdate: function(key,info,domNode) {
+          if (info == null) {
+            return;
+          }
+        
+          var rel = info.getCellValue("fromNick");
+          if(rel == "me") {
+            rel = info.getCellValue("toNick");
+          }
+          
+          var color = this.associated[rel];
+          if (!color) {
+            this.associated[rel] = this.colors[this.next];
+            this.next = (this.next >= this.colors.length) ? 0 : this.next+1;
+            color = this.associated[rel];
+          }
+          // set background color for the new row
+          domNode.style.backgroundColor = color;
+        }
+
+      });
+      
+      var imSubscription = new Subscription("DISTINCT","im_"+myNick,["fromNick", "toNick", "message"]); // myNick is used in the item name to subscribe to
+      imSubscription.setDataAdapter("SIMPLE_MESSENGER");
+      imSubscription.setRequestedSnapshot(30);
+      
+      imSubscription.addListener({
+        // when the subscription is active, let's enable the message submission form
+        onSubscription: function() {
+          document.getElementById("user_message").disabled = false;
+          document.getElementById("message_button").disabled = false;
+        },
+        // viceversa when the subscription is not active anymore, let's disable the message submission form
+        onUnsubscription: function() {
+          document.getElementById("user_message").disabled = true;
+          document.getElementById("message_button").disabled = true;
+        }
+      });
+      
+      imSubscription.addListener(imGrid);
+      
+      lsClient.subscribe(imSubscription);
+    }); 
+  
+ }
+
+//////////////// Buddy Table Management
+
+  // will create a Subscription+DynaGrid after the login
+  function createBuddyTable() {
+  
+    require(["js/lsClient","DynaGrid","Subscription"],function(lsClient,DynaGrid,Subscription) { 
+  
+      
+      var buddiesGrid = new DynaGrid("buddies",true);
+      buddiesGrid.setAutoCleanBehavior(true, false);
+      buddiesGrid.setSort("key");
+      buddiesGrid.addListener({
+        
+        // handle new rows (style, manage clicks, etc.)
+        onVisualUpdate: function(key,info,domNode) {
+          if (info == null) {
+            // handle disappearing rows
+            if (buddiesGrid.getValue("key") == currentBuddyNick) {
+              currentBuddyNode = null;
+              currentBuddyNick = null;
+            }
+            return;
+          }
+          
+          if (info.getChangedFieldValue("command") != "ADD") {
+            return;
+          }
+          
+          var currentNick = info.getChangedFieldValue("key"); //can't be unchanged during an ADD
+          domNode.style.cursor = "pointer";
+          if (currentNick == myNick) {
+            info.setCellValue("key", currentNick + " (me)");
+            domNode.style.fontStyle = "italic";
+          }
+          
+          // make each new row added to the grid selectable
+          domNode.onclick = function() {
+            if (currentBuddyNode != null && currentBuddyNode != this) {
+              currentBuddyNode.style.backgroundColor = "white";
+              currentBuddyNode.style.fontWeight = "normal";
+            }
+            currentBuddyNode = this;
+            currentBuddyNick = currentNick;
+            currentBuddyNode.style.backgroundColor = "yellow";
+            currentBuddyNode.style.fontWeight = "bold";
+          };
+        }
+      
+      });
+      
+      var buddiesSubscription = new Subscription("COMMAND","buddy_list",["command", "key"]);
+      buddiesSubscription.setDataAdapter("SIMPLE_MESSENGER");
+      buddiesSubscription.setRequestedSnapshot("yes");
+      
+      buddiesSubscription.addListener(buddiesGrid);
+      lsClient.subscribe(buddiesSubscription);
+
+    });
+   }
+</script>
+
+</body>
+
+</html>

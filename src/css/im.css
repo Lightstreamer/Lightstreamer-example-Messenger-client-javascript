@@ -1,0 +1,85 @@
+/*
+ * LIGHTSTREAMER - www.lightstreamer.com
+ * Basic Instant Messenger Demo
+ *  Copyright 2013 Weswit Srl
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.demoTitle {
+  font-family: Verdana, Arial, Helvetica, Sans-serif;
+  font-size: 9pt;
+  color: #000000;
+  font-weight: bold;
+  text-align: right;
+}
+.messagePanel {
+  width: 350px;
+  height: 380px;
+  overflow: auto;
+  border-style: solid;
+  border-color: #b0b0b0;
+  border-width: 3px;
+  background-color: #ffffff;
+}
+.messageContainer {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #0055aa;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5x;
+  padding-bottom: 3px;
+}
+.messagePart1 {
+  font-family: Sans-serif;
+  font-size: 8pt;
+  color: #0080ff;
+}
+.messagePart2 {
+  font-family: Sans-serif;
+  font-size: 9pt;
+  color: #000000;
+}
+.sendTitle {
+  font-family: Sans-serif;
+  font-size: 9pt;
+  color: #000000;
+}
+.buddiesTitle {
+  height: 15px;
+  font-family: Sans-serif;
+  font-size: 9pt;
+  background-color: #b0b0b0;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+.buddiesPanel {
+  width: 150px;
+  height: 365px;
+  overflow: auto;
+  border-style: solid;
+  border-color: #b0b0b0;
+  border-width: 3px;
+  background-color: #ffffff;
+}
+.buddy {
+  font-family: Sans-serif;
+  font-size: 9pt;
+  color: #101010;
+}
+#wrap {
+  width: 518px;
+  margin: 0 auto;
+}
