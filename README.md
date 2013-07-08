@@ -1,16 +1,19 @@
 
-Lightstreamer Messenger Demo Client for JavaScript
-==================================================
+# Lightstreamer Messenger Demo Client for JavaScript #
+
+This project includes a simple web client front-end example for the [Lightstreamer Instant Messenger Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
+
+## Basic Instant Messenger Demo ##
 
 <table>
   <tr>
     <td style="text-align: left">
-      &nbsp;<a href="http://www.lightstreamer.com/demo/MessengerDemo" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_messenger.png"></a>&nbsp;
+      &nbsp;<a href="http://demos.lightstreamer.com/MessengerDemo" target="_blank"><img src="http://www.lightstreamer.com/img/demo/screen_messenger.png"></a>&nbsp;
       
     </td>
     <td>
       &nbsp;An online demonstration is hosted on our servers at:<br>
-      &nbsp;<a href="http://www.lightstreamer.com/demo/MessengerDemo" target="_blank">http://www.lightstreamer.com/demo/MessengerDemo</a>
+      &nbsp;<a href="http://demos.lightstreamer.com/MessengerDemo" target="_blank">http://demos.lightstreamer.com/MessengerDemo</a>
     </td>
   </tr>
 </table>
@@ -27,14 +30,13 @@ The demo includes the following client-side technologies:
 * A [Subscription](http://www.lightstreamer.com/docs/client_javascript_uni_api/Subscription.html) containing 1 item, subscribed to in COMMAND mode feeding a [DynaGrid](http://www.lightstreamer.com/docs/client_javascript_uni_api/DynaGrid.html) (showing the updated buddy list).
 * The messages are sent to the Lightstreamer Server using the [LightstreamerClient.sendMessage](http://www.lightstreamer.com/docs/client_javascript_uni_api/LightstreamerClient.html#sendMessage) utility.
 
-Run The Demo
-------------
+# Deploy #
 
 Before you can run the demo some dependencies need to be solved:
 
--  Get the lightstreamer.js file from the [Lightstreamer 5 Colosseo distribution](http://www.lightstreamer.com/download) 
+-  Get the lightstreamer.js file from the [latest Lightstreamer distribution](http://www.lightstreamer.com/download) 
    and put it in the src/[demo_name]/js folder of the demo (if that is the case, please create it). Alternatively you can build a lightstreamer.js file from the 
-   [online generator](http://www.lightstreamer.com/distros/Lightstreamer_Allegro-Presto-Vivace_5_0_Colosseo_20120803/Lightstreamer/DOCS-SDKs/sdk_client_javascript/tools/generator.html).
+   [online generator](http://www.lightstreamer.com/distros/Lightstreamer_Allegro-Presto-Vivace_5_1_1_Colosseo_20130305/Lightstreamer/DOCS-SDKs/sdk_client_javascript/tools/generator.html).
    In that case be sure to include the LightstreamerClient, Subscription, DynaGrid, and StatusWidget modules and to use the "Use AMD" version.
 -  Get the require.js file form [requirejs.org](http://requirejs.org/docs/download.html) and put it in the src/[demo_name]/js folder of the demo.
 
@@ -45,16 +47,19 @@ The client demo configuration assumes that Lightstreamer Server, Lightstreamer A
 var lsClient = new LightstreamerClient(protocolToUse+"//localhost:8080","DEMO");
 ```
 in js/lsClient.js file and change it accordingly.<br>
-Anyway the SIMPLE_MESSENGER Adapter and IMMetadataAdapter (to be added) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
+Anyway the [SIMPLE_MESSENGER](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java) and [IMMetadataAdapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java) Adapters have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
 The demo are now ready to be launched.
 
-See Also
---------
+# See Also #
 
-* To be add: Lightstreamer Messenger Demo Adapter.
+## Lightstreamer Adapters needed by these demo clients ##
 
+* [Lightstreamer Instant Messenger Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
 
-Lightstreamer Compatibility Notes
----------------------------------
+## Similar demo clients that may interest you ##
+
+* [Lightstreamer Chat Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-Chat-client-javascript)
+
+# Lightstreamer Compatibility Notes #
 
 - Compatible with Lightstreamer JavaScript Client library version 6.0 or newer.
