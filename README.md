@@ -1,7 +1,6 @@
+# Lightstreamer - Basic Messenger Demo - HTML Client #
 
-# Lightstreamer Messenger Demo Client for JavaScript #
-
-This project includes a simple web client front-end example for the [Lightstreamer Instant Messenger Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
+This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
 
 ## Basic Instant Messenger Demo ##
 
@@ -19,11 +18,11 @@ This project includes a simple web client front-end example for the [Lightstream
 </table>
 
 The Basic Instant Messenger Demo shows an extremely simple version of a typical messenger, where messages can be delivered to a specific friend, chosen from a dynamic list of online buddies.<br>
-Choose a nick-name and click Login. You will see a list of all users connected to this demo, with their nicknames. Write a message and choose a recipient. The message will be delivered only to him/her (rather than broadcasting it, as the [Basic Chat Demo](https://github.com/Weswit/Lightstreamer-example-chat-client-javascript) does).<br>
+Choose a nick-name and click Login. You will see a list of all users connected to this demo, with their nicknames. Write a message and choose a recipient. The message will be delivered only to him/her (rather than broadcasting it, as the [Lightstreamer - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-chat-client-javascript) does).<br>
 
 Launch multiple instances of the demo, possibly on different machines, to populate the Buddies list. If you use the same nick-name on different instances, you will actually embody the same identity (to keep things simple, no authentication is used).<br>
 
-The front-end code can be considered a reference example of one-to-one messaging. Each user subscribes to their personal item (corresponding to the nick-name), so that messages can be routed properly, instead of begin broadcast (as in the [Basic Chat Demo](https://github.com/Weswit/Lightstreamer-example-chat-client-javascript), where all the users subscribe to the same item). In real applications, where authentication is used, the Metadata Adapter should enforce the association between the user's identity and the item they have the right to subscribe to.<br>
+The front-end code can be considered a reference example of one-to-one messaging. Each user subscribes to their personal item (corresponding to the nick-name), so that messages can be routed properly, instead of begin broadcast (as in the [Lightstreamer - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-chat-client-javascript), where all the users subscribe to the same item). In real applications, where authentication is used, the Metadata Adapter should enforce the association between the user's identity and the item they have the right to subscribe to.<br>
 
 The demo includes the following client-side technologies:
 * A [Subscription](http://www.lightstreamer.com/docs/client_javascript_uni_api/Subscription.html) containing 1 item, subscribed to in DISTINCT mode feeding a [DynaGrid](http://www.lightstreamer.com/docs/client_javascript_uni_api/DynaGrid.html) (showing all the personal messages).
@@ -54,11 +53,11 @@ The demo are now ready to be launched.
 
 ## Lightstreamer Adapters needed by this demo client ##
 
-* [Lightstreamer Instant Messenger Demo Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
+* [Lightstreamer - Basic Messenger Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
 
 ## Similar demo clients that may interest you ##
 
-* [Lightstreamer Chat Demo Client for JavaScript](https://github.com/Weswit/Lightstreamer-example-Chat-client-javascript)
+* [Lightstreamer - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-Chat-client-javascript)
 
 # Lightstreamer Compatibility Notes #
 
