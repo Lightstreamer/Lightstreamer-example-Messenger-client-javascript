@@ -2,8 +2,6 @@
 
 This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
 
-## Basic Instant Messenger Demo ##
-
 <table>
   <tr>
     <td style="text-align: left">
