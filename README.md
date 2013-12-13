@@ -1,6 +1,6 @@
 # Lightstreamer - Basic Messenger Demo - HTML Client #
 
-This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
+This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
 
 <table>
   <tr>
@@ -51,7 +51,7 @@ The demo are now ready to be launched.
 
 ## Lightstreamer Adapters needed by this demo client ##
 
-* [Lightstreamer - Basic Messenger Demo - Java SE Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
+* [Lightstreamer - Basic Messenger Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
 
 ## Similar demo clients that may interest you ##
 
