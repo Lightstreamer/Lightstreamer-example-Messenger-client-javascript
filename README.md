@@ -1,6 +1,6 @@
 # Lightstreamer - Basic Messenger Demo - HTML Client #
 
-<!-- START DESCRIPTION Basic Messenger Demo -->
+<!-- START DESCRIPTION lightstreamer-example-messenger-client-javascript -->
 
 This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
 
@@ -30,7 +30,7 @@ The demo includes the following client-side technologies:
 * The messages are sent to the Lightstreamer Server using the [LightstreamerClient.sendMessage](http://www.lightstreamer.com/docs/client_javascript_uni_api/LightstreamerClient.html#sendMessage) utility.
 
 
-<!-- END DESCRIPTION Basic Messenger Demo -->
+<!-- END DESCRIPTION lightstreamer-example-messenger-client-javascript -->
 
 
 # Deploy #
