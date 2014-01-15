@@ -4,18 +4,8 @@
 
 This project includes a simple web client front-end example for the [Lightstreamer - Basic Messenger Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java).
 
-<table>
-  <tr>
-    <td style="text-align: left">
-      &nbsp;<a href="http://demos.lightstreamer.com/MessengerDemo" target="_blank"><img src="screen_messenger.png"></a>&nbsp;
-      
-    </td>
-    <td>
-      &nbsp;An online demonstration is hosted on our servers at:<br>
-      &nbsp;<a href="http://demos.lightstreamer.com/MessengerDemo" target="_blank">http://demos.lightstreamer.com/MessengerDemo</a>
-    </td>
-  </tr>
-</table>
+[![screenshot](screen_messenger_large.png)](http://demos.lightstreamer.com/MessengerDemo/)<br>
+An online demonstration is hosted on our servers at: [http://demos.lightstreamer.com/MessengerDemo/](http://demos.lightstreamer.com/MessengerDemo/)<br>
 
 The Basic Instant Messenger Demo shows an extremely simple version of a typical messenger, where messages can be delivered to a specific friend, chosen from a dynamic list of online buddies.<br>
 Choose a nick-name and click Login. You will see a list of all users connected to this demo, with their nicknames. Write a message and choose a recipient. The message will be delivered only to him/her (rather than broadcasting it, as the [Lightstreamer - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-chat-client-javascript) does).<br>
@@ -29,9 +19,7 @@ The demo includes the following client-side functionalities:
 * A [Subscription](http://www.lightstreamer.com/docs/client_javascript_uni_api/Subscription.html) containing 1 item, subscribed to in <b>COMMAND</b> mode feeding a [DynaGrid](http://www.lightstreamer.com/docs/client_javascript_uni_api/DynaGrid.html) (showing the updated buddy list).
 * The messages are sent to the Lightstreamer Server using the [LightstreamerClient.sendMessage](http://www.lightstreamer.com/docs/client_javascript_uni_api/LightstreamerClient.html#sendMessage) utility.
 
-
 <!-- END DESCRIPTION lightstreamer-example-messenger-client-javascript -->
-
 
 # Deploy #
 
@@ -55,14 +43,14 @@ The demo are now ready to be launched.
 
 # See Also #
 
-## Lightstreamer Adapters needed by this demo client ##
+## Lightstreamer Adapters Needed by This Demo Client ##
 <!-- START RELATED_ENTRIES -->
 
 * [Lightstreamer - Basic Messenger Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java)
 
 <!-- END RELATED_ENTRIES -->
 
-## Similar demo clients that may interest you ##
+## Related Projects ##
 
 * [Lightstreamer - Basic Chat Demo - HTML Client](https://github.com/Weswit/Lightstreamer-example-Chat-client-javascript)
 
