@@ -35,7 +35,7 @@ You can deploy this demo in order to use the Lightstreamer server as Web server 
 If you choose the former case please note that in the <LS_HOME>/pages/demos/ folder there is a copy of the /src directory of this project, if this is non your case please create the folders <LS_HOME>/pages/demos/MessengerDemo then copy here the contents of the /src folder of this project.<br>
 The client demo configuration assumes that Lightstreamer Server, Lightstreamer Adapters and this client are launched on the same machine. If you need to targeting a different Lightstreamer server please search this line:
 ```js
-var lsClient = new LightstreamerClient(protocolToUse+"//localhost:8080","MESSENGER");
+var lsClient = new LightstreamerClient(protocolToUse+"//localhost:"+portToUse,"MESSENGER");
 ```
 in js/lsClient.js file and change it accordingly.<br>
 Anyway the [SIMPLE_MESSENGER](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java) and [IMMetadataAdapter](https://github.com/Weswit/Lightstreamer-example-Messenger-adapter-java) Adapters have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
