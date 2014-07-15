@@ -41,7 +41,7 @@ Alternatively you can build a `lightstreamer.js` file from the [online generator
 The client demo configuration assumes that Lightstreamer Server, Lightstreamer Adapters and this client are launched on the same machine. If you need to targeting a different Lightstreamer server please search in `js/lsClient.js` this line:<BR/> 
 `var lsClient = new LightstreamerClient(protocolToUse+"//localhost:"+portToUse,"MESSENGER");`<BR/> 
 and change it accordingly.
-* Open your browser and point it to: [http://localhost:8080/demos/MessengerDemo/](http://localhost:8080/demos/MessengerDemo/)
+* Open your browser and point it to: [http://localhost:8080/MessengerDemo/](http://localhost:8080/MessengerDemo/)
 
 ## See Also
 
