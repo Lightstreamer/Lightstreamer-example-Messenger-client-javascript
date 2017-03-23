@@ -11,7 +11,7 @@ As an example of [Lightstreamer Adapters Needed by This Client](https://github.c
 
 [![screenshot](screen_messenger_large.png)](http://demos.lightstreamer.com/MessengerDemo)
 
-###[![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/MessengerDemo)
+### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/MessengerDemo)
 
 ## Details
 
