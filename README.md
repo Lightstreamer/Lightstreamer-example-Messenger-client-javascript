@@ -9,9 +9,9 @@ As an example of [Lightstreamer Adapters Needed by This Client](https://github.c
 
 ## Live Demo
 
-[![screenshot](screen_messenger_large.png)](http://demos.lightstreamer.com/MessengerDemo)
+[![screenshot](screen_messenger_large.png)](https://demos.lightstreamer.com/MessengerDemo/)
 
-### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](http://demos.lightstreamer.com/MessengerDemo)
+### [![](http://demos.lightstreamer.com/site/img/play.png) View live demo](https://demos.lightstreamer.com/MessengerDemo/)
 
 ## Details
 
